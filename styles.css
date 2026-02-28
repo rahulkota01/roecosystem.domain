@@ -1957,10 +1957,6 @@ a.contact-method:hover .method-icon {
     max-width: 520px;
   }
 
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .about-layout,
   .how-layout,
   .vision-layout {
