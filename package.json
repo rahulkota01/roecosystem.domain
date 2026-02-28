@@ -1,0 +1,13 @@
+{
+    "name": "ro-ecosystem",
+    "version": "1.0.0",
+    "description": "RO Ecosystem - Engineering Intelligence at the Intersection of Biology and Computation",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^5.0.0"
+    }
+}
