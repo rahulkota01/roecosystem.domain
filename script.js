@@ -524,10 +524,233 @@
     initEmailJS();
   }
 
+  /* ====================================================
+     16. UNDER-DEVELOPMENT MODAL
+  ==================================================== */
+  const DEV_TOOLS = {
+    'tool-1': 'RO Virtual Research Lab',
+    'tool-2': 'RO-Link',
+    'tool-3': 'RO Nexus',
+  };
+
+  let matrixRafId = null;
+
+  function startMatrixRain() {
+    const canvas = document.getElementById('dev-matrix-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // Size canvas to its CSS rendered size
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width || 460;
+    canvas.height = rect.height || 200;
+
+    const W = canvas.width;
+    const H = canvas.height;
+    const FONT_SIZE = 11;
+    const COLS = Math.floor(W / FONT_SIZE);
+
+    // Mix of matrix chars + code symbols for realism
+    const CHARS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ01アBinaryFunctionClassReturn{};=>0x9sFALSE_TRUE_NULL_VOID_INT';
+    const drops = Array.from({ length: COLS }, () => Math.random() * -H / FONT_SIZE | 0);
+
+    function drawFrame() {
+      // Semi-transparent black wipe for trail effect
+      ctx.fillStyle = 'rgba(5, 5, 8, 0.18)';
+      ctx.fillRect(0, 0, W, H);
+
+      for (let i = 0; i < COLS; i++) {
+        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+        const y = drops[i] * FONT_SIZE;
+        const x = i * FONT_SIZE;
+
+        // Lead char: bright white-cyan
+        const isFront = drops[i] * FONT_SIZE > H * 0.15;
+        const r = Math.random();
+        if (r > 0.92) {
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowColor = '#00f5ff';
+          ctx.shadowBlur = 8;
+        } else if (r > 0.6) {
+          ctx.fillStyle = '#00f5ff';
+          ctx.shadowColor = '#00f5ff';
+          ctx.shadowBlur = 4;
+        } else {
+          // Occasionally violet for variety
+          ctx.fillStyle = r > 0.3 ? 'rgba(0,245,255,0.7)' : 'rgba(167,139,250,0.6)';
+          ctx.shadowBlur = 0;
+        }
+
+        ctx.font = `${FONT_SIZE}px "Courier New", monospace`;
+        ctx.fillText(char, x, y);
+        ctx.shadowBlur = 0;
+
+        // Reset drop when off-screen with some randomness
+        if (y > H && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+
+      matrixRafId = requestAnimationFrame(drawFrame);
+    }
+
+    drawFrame();
+  }
+
+  function stopMatrixRain() {
+    if (matrixRafId) {
+      cancelAnimationFrame(matrixRafId);
+      matrixRafId = null;
+    }
+  }
+
+  /* Progress label cycling */
+  const COMPILE_LABELS = [
+    'COMPILING…', 'INIT MODULES…', 'LINKING…', 'BOOT SEQUENCE…',
+    'AWAIT DEPLOY…', 'BUILD: 78%', 'STANDBY…'
+  ];
+
+  let labelIntervalId = null;
+
+  function startProgressLabel() {
+    const el = document.getElementById('dev-progress-label');
+    if (!el) return;
+    let idx = 0;
+    el.textContent = COMPILE_LABELS[idx];
+    labelIntervalId = setInterval(() => {
+      idx = (idx + 1) % COMPILE_LABELS.length;
+      el.textContent = COMPILE_LABELS[idx];
+    }, 1800);
+  }
+
+  function stopProgressLabel() {
+    if (labelIntervalId) { clearInterval(labelIntervalId); labelIntervalId = null; }
+  }
+
+  /* Reset progress bar animation by re-cloning element */
+  function resetProgressBar() {
+    const fill = document.getElementById('dev-progress-fill');
+    if (!fill) return;
+    const clone = fill.cloneNode(true);
+    fill.parentNode.replaceChild(clone, fill);
+  }
+
+  /* Open modal */
+  function openDevModal(toolId) {
+    const modal = document.getElementById('dev-modal');
+    const toolNameEl = document.getElementById('dev-tool-name');
+    if (!modal) return;
+
+    const name = DEV_TOOLS[toolId] || 'This Tool';
+    if (toolNameEl) toolNameEl.textContent = name;
+
+    // Update contact mailto subject
+    const contactBtn = document.getElementById('dev-contact-btn');
+    if (contactBtn) {
+      const subject = encodeURIComponent(`Collaboration Interest — ${name} (RO Ecosystem)`);
+      contactBtn.href = `mailto:rahulkota0101@gmail.com?subject=${subject}`;
+    }
+
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    resetProgressBar();
+    startMatrixRain();
+    startProgressLabel();
+
+    // Focus close button for keyboard accessibility
+    const closeBtn = document.getElementById('dev-modal-close');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 60);
+  }
+
+  /* Close modal */
+  function closeDevModal() {
+    const modal = document.getElementById('dev-modal');
+    if (!modal) return;
+    stopMatrixRain();
+    stopProgressLabel();
+
+    // Animate out
+    const box = modal.querySelector('.dev-modal-box');
+    if (box) {
+      box.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      box.style.opacity = '0';
+      box.style.transform = 'translateY(20px) scale(0.95)';
+    }
+
+    setTimeout(() => {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      if (box) { box.style.transition = ''; box.style.opacity = ''; box.style.transform = ''; }
+    }, 260);
+  }
+
+  function initDevModal() {
+    // Wire close button
+    const closeBtn = document.getElementById('dev-modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeDevModal);
+
+    // Wire backdrop click
+    const backdrop = document.querySelector('.dev-modal-backdrop');
+    if (backdrop) backdrop.addEventListener('click', closeDevModal);
+
+    // Wire "Research Talk" button to also close modal
+    const collabBtn = document.getElementById('dev-collab-btn');
+    if (collabBtn) {
+      collabBtn.addEventListener('click', (e) => {
+        closeDevModal();
+        // Smooth scroll handled by existing initSmoothScroll()
+      });
+    }
+
+    // Keyboard: Escape
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('dev-modal');
+      if (e.key === 'Escape' && modal && !modal.hasAttribute('hidden')) {
+        closeDevModal();
+      }
+    });
+
+    // Wire the 3 non-functional tool cards
+    Object.keys(DEV_TOOLS).forEach(toolId => {
+      const card = document.getElementById(toolId);
+      if (!card) return;
+
+      // Remove old data-href navigation for these cards
+      card.removeAttribute('data-href');
+      card.style.cursor = 'pointer';
+
+      // Remove any inline onclick (only tool-0 has inline onclick)
+      // Tool-1, 2, 3 don't, but clean up data-href from their buttons too
+      card.querySelectorAll('[data-href]').forEach(el => el.removeAttribute('data-href'));
+
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openDevModal(toolId);
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openDevModal(toolId);
+        }
+      });
+    });
+  }
+
+  // ── Patch init() to also call initDevModal ──
+  const _originalInit = init;
+  function initAll() {
+    _originalInit();
+    initDevModal();
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.removeEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', initAll);
   } else {
-    init();
+    initAll();
   }
 
 })();

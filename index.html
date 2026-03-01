@@ -611,7 +611,101 @@
     </div>
   </footer>
 
-  <!-- EmailJS -->
+  <!-- ═══════════════════════ UNDER DEV MODAL ═══════════════════════ -->
+  <div id="dev-modal" class="dev-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="dev-modal-title"
+    hidden>
+    <div class="dev-modal-backdrop"></div>
+    <div class="dev-modal-box">
+
+      <!-- Close Button -->
+      <button class="dev-modal-close" id="dev-modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Monitor / Screen -->
+      <div class="dev-monitor-wrap">
+        <div class="dev-monitor">
+          <!-- Scanlines overlay -->
+          <div class="dev-scanlines" aria-hidden="true"></div>
+          <!-- Matrix code rain canvas -->
+          <canvas id="dev-matrix-canvas" class="dev-matrix-canvas" aria-hidden="true"></canvas>
+          <!-- Screen overlay content -->
+          <div class="dev-screen-overlay">
+            <div class="dev-screen-tag">SYSTEM STATUS</div>
+            <div class="dev-screen-status">
+              <span class="dev-blink">▋</span> MODULE OFFLINE
+            </div>
+            <div class="dev-screen-progress">
+              <div class="dev-progress-bar">
+                <div class="dev-progress-fill" id="dev-progress-fill"></div>
+              </div>
+              <span class="dev-progress-label" id="dev-progress-label">COMPILING…</span>
+            </div>
+          </div>
+        </div>
+        <!-- Monitor stand -->
+        <div class="dev-monitor-neck"></div>
+        <div class="dev-monitor-base"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="dev-modal-content">
+        <!-- Glitch title -->
+        <div class="dev-glitch-wrap" aria-hidden="true">
+          <span class="dev-glitch" data-text="UNDER DEVELOPMENT">UNDER DEVELOPMENT</span>
+        </div>
+        <h2 class="dev-modal-title" id="dev-modal-title">
+          <span id="dev-tool-name">Tool</span>
+        </h2>
+        <p class="dev-modal-desc">
+          This module is being actively engineered within the RO Ecosystem pipeline.
+          Our team is building research-grade infrastructure — it will be ready soon.
+        </p>
+
+        <!-- Status chips -->
+        <div class="dev-chips">
+          <span class="dev-chip dev-chip-build">
+            <span class="dev-chip-dot"></span> Active Build
+          </span>
+          <span class="dev-chip dev-chip-collab">
+            <span class="dev-chip-dot"></span> Open to Collaboration
+          </span>
+          <span class="dev-chip dev-chip-research">
+            <span class="dev-chip-dot"></span> Research Phase
+          </span>
+        </div>
+
+        <!-- Actions -->
+        <div class="dev-modal-actions">
+          <a href="mailto:rahulkota0101@gmail.com?subject=Collaboration%20Interest%20-%20RO%20Ecosystem"
+            class="btn btn-primary" id="dev-contact-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Contact Founder
+          </a>
+          <a href="#contact" class="btn btn-outline" id="dev-collab-btn" data-scroll="contact">
+            Research Talk
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
   <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
   <script type="module" src="script.js"></script>
 </body>
