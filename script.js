@@ -826,6 +826,7 @@
   ==================================================== */
   function initNoteModal() {
     const noteNavLink = document.getElementById('note-nav-link');
+    const footerNoteLink = document.getElementById('footer-note-link');
     const modal = document.getElementById('note-modal');
     const closeBtn = document.getElementById('note-modal-close');
     const backdrop = document.querySelector('.note-modal-backdrop');
@@ -835,6 +836,14 @@
     // Open modal when Note nav link is clicked
     if (noteNavLink) {
       noteNavLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openNoteModal();
+      });
+    }
+
+    // Open modal when footer Note link is clicked
+    if (footerNoteLink) {
+      footerNoteLink.addEventListener('click', (e) => {
         e.preventDefault();
         openNoteModal();
       });
