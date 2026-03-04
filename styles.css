@@ -2428,7 +2428,20 @@ a.contact-method:hover .method-icon {
 }
 
 .people-member-card {
-  max-width: 320px;
+  max-width: 280px;
+}
+
+.people-member-email {
+  font-size: 0.8rem;
+  color: var(--cyan);
+  text-decoration: none;
+  margin-top: 4px;
+  transition: opacity 0.2s;
+}
+
+.people-member-email:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 /* Founder Card */
