@@ -2412,6 +2412,25 @@ a.contact-method:hover .method-icon {
   gap: 32px;
 }
 
+/* Team Separator */
+.people-team-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle) 20%, var(--border-subtle) 80%, transparent);
+  margin: 24px 0;
+  opacity: 0.6;
+}
+
+/* Single Team Member (centered) */
+.people-team-single {
+  display: flex;
+  justify-content: center;
+}
+
+.people-member-card {
+  max-width: 320px;
+}
+
 /* Founder Card */
 .people-founder-card {
   display: flex;
