@@ -525,7 +525,89 @@
   }
 
   /* ====================================================
-     16. UNDER-DEVELOPMENT MODAL
+     16. PEOPLE MODAL
+  ==================================================== */
+  function initPeopleModal() {
+    const peopleNavLink = document.getElementById('people-nav-link');
+    const footerPeopleLink = document.getElementById('footer-people-link');
+    const modal = document.getElementById('people-modal');
+    const closeBtn = document.getElementById('people-modal-close');
+    const backdrop = document.querySelector('.people-modal-backdrop');
+
+    if (!modal) return;
+
+    // Open modal when People nav link is clicked
+    if (peopleNavLink) {
+      peopleNavLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPeopleModal();
+      });
+    }
+
+    // Open modal when footer People link is clicked
+    if (footerPeopleLink) {
+      footerPeopleLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPeopleModal();
+      });
+    }
+
+    // Close modal handlers
+    if (closeBtn) closeBtn.addEventListener('click', closePeopleModal);
+    if (backdrop) backdrop.addEventListener('click', closePeopleModal);
+
+    // Contact buttons - close modal before opening mailto
+    modal.querySelectorAll('.people-contact-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closePeopleModal();
+      });
+    });
+
+    // Keyboard: Escape to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        closePeopleModal();
+      }
+    });
+  }
+
+  function openPeopleModal() {
+    const modal = document.getElementById('people-modal');
+    if (!modal) return;
+
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button for keyboard accessibility
+    const closeBtn = document.getElementById('people-modal-close');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 60);
+  }
+
+  function closePeopleModal() {
+    const modal = document.getElementById('people-modal');
+    if (!modal) return;
+
+    // Animate out
+    const box = modal.querySelector('.people-modal-box');
+    if (box) {
+      box.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      box.style.opacity = '0';
+      box.style.transform = 'translateY(20px) scale(0.95)';
+    }
+
+    setTimeout(() => {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      if (box) {
+        box.style.transition = '';
+        box.style.opacity = '';
+        box.style.transform = '';
+      }
+    }, 260);
+  }
+
+  /* ====================================================
+     17. UNDER-DEVELOPMENT MODAL
   ==================================================== */
   const DEV_TOOLS = {
     'tool-1': 'RO Virtual Research Lab',
@@ -739,10 +821,78 @@
     });
   }
 
-  // ── Patch init() to also call initDevModal ──
+  /* ====================================================
+     17. FOUNDER NOTE MODAL
+  ==================================================== */
+  function initNoteModal() {
+    const noteNavLink = document.getElementById('note-nav-link');
+    const modal = document.getElementById('note-modal');
+    const closeBtn = document.getElementById('note-modal-close');
+    const backdrop = document.querySelector('.note-modal-backdrop');
+
+    if (!modal) return;
+
+    // Open modal when Note nav link is clicked
+    if (noteNavLink) {
+      noteNavLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openNoteModal();
+      });
+    }
+
+    // Close modal handlers
+    if (closeBtn) closeBtn.addEventListener('click', closeNoteModal);
+    if (backdrop) backdrop.addEventListener('click', closeNoteModal);
+
+    // Keyboard: Escape to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        closeNoteModal();
+      }
+    });
+  }
+
+  function openNoteModal() {
+    const modal = document.getElementById('note-modal');
+    if (!modal) return;
+
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button for keyboard accessibility
+    const closeBtn = document.getElementById('note-modal-close');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 60);
+  }
+
+  function closeNoteModal() {
+    const modal = document.getElementById('note-modal');
+    if (!modal) return;
+
+    // Animate out
+    const box = modal.querySelector('.note-modal-box');
+    if (box) {
+      box.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      box.style.opacity = '0';
+      box.style.transform = 'translateY(20px) scale(0.95)';
+    }
+
+    setTimeout(() => {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      if (box) {
+        box.style.transition = '';
+        box.style.opacity = '';
+        box.style.transform = '';
+      }
+    }, 260);
+  }
+
+  // ── Patch init() to also call initPeopleModal, initNoteModal and initDevModal ──
   const _originalInit = init;
   function initAll() {
     _originalInit();
+    initPeopleModal();
+    initNoteModal();
     initDevModal();
   }
 
