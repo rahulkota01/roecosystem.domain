@@ -610,7 +610,6 @@
      17. UNDER-DEVELOPMENT MODAL
   ==================================================== */
   const DEV_TOOLS = {
-    'tool-1': 'RO Virtual Research Lab',
     'tool-2': 'RO-Link',
     'tool-3': 'RO Nexus',
   };

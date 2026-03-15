@@ -59,6 +59,7 @@
             <li><a href="#about" data-scroll="about">About</a></li>
             <li><a href="#tools" data-scroll="tools">Tools</a></li>
             <li><a href="#how" data-scroll="how">Pipeline</a></li>
+            <li><a href="#news" data-scroll="news">News</a></li>
             <li><a href="#founder" data-scroll="founder">Vision</a></li>
             <li><a href="#" id="people-nav-link">People</a></li>
             <li><a href="#" id="note-nav-link">Note</a></li>
@@ -95,11 +96,7 @@
   </header>
 
   <!-- ═══════════════════════ ANNOUNCEMENT ═══════════════════════ -->
-  <div class="announcement-banner reveal">
-    <span class="announcement-tag">NEW</span>
-    <span>We launched <strong>"Research Navigator"</strong> — your intelligent guide to research. Detect contradictions, score hypotheses, and see where the field is headed.</span>
-    <a href="http://research.roecosystem.in" target="_blank" rel="noopener noreferrer">Check it out live →</a>
-  </div>
+
 
   <main>
 
@@ -302,20 +299,21 @@
             </button>
           </div>
 
-          <!-- Tool 1 -->
-          <div class="tool-card tilt-card" id="tool-1" data-href="tool-template.html" tabindex="0" role="button"
+          <!-- Tool 1: RO Virtual Research Lab -->
+          <div class="tool-card tilt-card" id="tool-1" 
+            onclick="window.open('http://lab.roecosystem.in', '_blank')" tabindex="0" role="button"
             aria-label="Access RO Virtual Research Lab">
             <div class="tool-card-icon tool-card-icon-1">🧪</div>
-            <span class="tool-card-badge badge-dev">In Development</span>
+            <span class="tool-card-badge" style="background: var(--gold); color: #000; border: none;">Working for Tests</span>
             <div class="tool-status">
-              <span class="status-dot status-dev"></span>
-              <span class="status-text">In Development</span>
+              <span class="status-dot" style="background: var(--gold);"></span>
+              <span class="status-text">Beta Access</span>
             </div>
             <h3>RO Virtual Research Lab</h3>
             <p>An intelligent experimental reasoning environment for structured formulation logic, modeling workflows,
               and AI-assisted research simulation.</p>
-            <button class="btn btn-outline" data-href="tool-template.html" aria-hidden="true" tabindex="-1">
-              Initialize Framework
+            <button class="btn btn-outline" aria-hidden="true" tabindex="-1">
+              Initialize Lab
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -432,6 +430,45 @@
 
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+
+    <!-- ═══════════════════════ NEWS ═══════════════════════ -->
+    <section id="news" class="section">
+      <div class="container">
+        <div class="news-header reveal">
+          <div class="section-tag">Updates & Announcements</div>
+          <h2 class="section-title">Latest from the Lab</h2>
+          <p class="section-lead">
+            Real-time updates on our computational research progress, 
+            new tool deployments, and ecosystem upgrades.
+          </p>
+        </div>
+
+        <div class="news-list stagger-children">
+          <div class="news-item reveal">
+            <div class="news-date-tag">15-03-2026</div>
+            <div class="news-content">
+              <h3 class="news-headline">Launched RO Virtual Research Lab For Users Feedback and Upgrade</h3>
+              <p class="news-text">
+                We are proud to announce the official beta launch of the Virtual Research Lab. 
+                The platform is now open for initial users to provide critical feedback as we 
+                continue to refine our virtual formulation and modeling capabilities.
+              </p>
+              <a href="http://lab.roecosystem.in" target="_blank" rel="noopener noreferrer" class="news-action-link">
+                Go to Virtual Lab
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
