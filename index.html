@@ -57,11 +57,12 @@
         <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="Primary navigation">
           <ul class="nav-links">
             <li><a href="#about" data-scroll="about">About</a></li>
-            <li><a href="#tools" data-scroll="tools">Tools</a></li>
-            <li><a href="#how" data-scroll="how">Pipeline</a></li>
-            <li><a href="news.html" target="_blank">News</a></li>
+            <li><a href="#" id="tools-nav-link">Tools</a></li>
+            <li><a href="#" id="pipeline-nav-link">Pipeline</a></li>
+            <li><a href="#" id="news-nav-link">News</a></li>
             <li><a href="#founder" data-scroll="founder">Vision</a></li>
             <li><a href="#" id="people-nav-link">People</a></li>
+            <li><a href="#" id="investors-nav-link">Investors</a></li>
             <li><a href="#" id="note-nav-link">Note</a></li>
             <li><a href="#contact" data-scroll="contact">Contact</a></li>
           </ul>
@@ -130,7 +131,7 @@
             </p>
 
             <div class="hero-cta">
-              <button class="btn btn-primary" data-scroll="tools" id="hero-cta-primary">
+              <button class="btn btn-primary" id="hero-cta-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                   aria-hidden="true">
@@ -232,248 +233,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══════════════════════ TOOLS ═══════════════════════ -->
-    <section id="tools" class="section">
-      <div class="container">
-        <div class="tools-header reveal">
-          <div class="section-tag">Platform Tools</div>
-          <h2 class="section-title">The RO Toolkit</h2>
-          <p class="section-lead">
-            Four modular research tools architected for collaboration,
-            structural modeling, and domain-aware reasoning.
-          </p>
-        </div>
-
-        <div class="tools-grid stagger-children" id="tools-grid">
-
-          <!-- Tool: MedNeXuS AI -->
-          <div class="tool-card tilt-card" id="tool-0"
-            onclick="window.open('http://mednexusai.roecosystem.in', '_blank')" tabindex="0" role="button"
-            aria-label="Access MedNeXuS Portal">
-            <div class="tool-card-icon"
-              style="background: rgba(0, 245, 255, 0.15); border: 1px solid rgba(0, 245, 255, 0.3);">🧠</div>
-            <span class="tool-card-badge" style="background: var(--cyan); color: #000; border: none;">Functional</span>
-            <div class="tool-status">
-              <span class="status-dot status-online"></span>
-              <span class="status-text">Online</span>
-            </div>
-            <h3>MedNeXuS AI</h3>
-            <p>Research papers made easy. Internally acquired scientific tool powered by Grok AI, designed to
-              drastically accelerate deep literature reasoning.</p>
-            <button class="btn btn-outline" aria-hidden="true" tabindex="-1">
-              Initialize MedNeXuS
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Tool: Research Navigator -->
-          <div class="tool-card tilt-card" id="tool-navigator"
-            onclick="window.open('http://research.roecosystem.in', '_blank')" tabindex="0" role="button"
-            aria-label="Access Research Navigator">
-            <div class="tool-card-icon"
-              style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3);">🧭</div>
-            <span class="tool-card-badge" style="background: #22c55e; color: #000; border: none;">Active</span>
-            <div class="tool-status">
-              <span class="status-dot status-online"></span>
-              <span class="status-text">Online</span>
-            </div>
-            <h3>Research Navigator</h3>
-            <p>AI-powered research intelligence that detects contradictions across papers, scores your hypotheses, and tells you exactly where the field is headed.</p>
-            <button class="btn btn-outline" aria-hidden="true" tabindex="-1">
-              Launch Navigator
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Tool 1: RO Virtual Research Lab -->
-          <div class="tool-card tilt-card" id="tool-1" 
-            onclick="window.open('http://lab.roecosystem.in', '_blank')" tabindex="0" role="button"
-            aria-label="Access RO Virtual Research Lab">
-            <div class="tool-card-icon tool-card-icon-1">🧪</div>
-            <span class="tool-card-badge" style="background: var(--gold); color: #000; border: none;">Working for Tests</span>
-            <div class="tool-status">
-              <span class="status-dot" style="background: var(--gold);"></span>
-              <span class="status-text">Beta Access</span>
-            </div>
-            <h3>RO Virtual Research Lab</h3>
-            <p>An intelligent experimental reasoning environment for structured formulation logic, modeling workflows,
-              and AI-assisted research simulation.</p>
-            <button class="btn btn-outline" aria-hidden="true" tabindex="-1">
-              Initialize Lab
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Tool 2 -->
-          <div class="tool-card tilt-card" id="tool-2" data-href="tool-template.html" tabindex="0" role="button"
-            aria-label="Access RO-Link">
-            <div class="tool-card-icon tool-card-icon-2">🔗</div>
-            <span class="tool-card-badge badge-soon">Coming Soon</span>
-            <div class="tool-status">
-              <span class="status-dot status-dev"></span>
-              <span class="status-text">In Development</span>
-            </div>
-            <h3>RO-Link</h3>
-            <p>A collaborative research workspace for structured discussion, decision tracking, and research
-              orchestration between contributors.</p>
-            <button class="btn btn-outline" data-href="tool-template.html" aria-hidden="true" tabindex="-1">
-              Launch Instance
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Tool 3 -->
-          <div class="tool-card tilt-card" id="tool-3" data-href="tool-template.html" tabindex="0" role="button"
-            aria-label="Access RO Nexus">
-            <div class="tool-card-icon tool-card-icon-3">🧠</div>
-            <span class="tool-card-badge badge-beta">Early Stage</span>
-            <div class="tool-status">
-              <span class="status-dot status-dev"></span>
-              <span class="status-text">In Development</span>
-            </div>
-            <h3>RO Nexus</h3>
-            <p>A domain-specialized AI reasoning system built on retrieval-augmented architecture to integrate
-              structured biological knowledge with intelligent modeling.</p>
-            <button class="btn btn-outline" data-href="tool-template.html" aria-hidden="true" tabindex="-1">
-              Access System
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
-    <section id="how" class="section">
-      <div class="container">
-        <div class="how-layout">
-
-          <div class="how-sticky reveal from-left">
-            <div class="section-tag">Pipeline</div>
-            <h2 class="section-title">How the<br>System Works</h2>
-            <p class="section-lead">
-              Four stages that transform raw biological uncertainty
-              into engineered, scalable research insights.
-            </p>
-            <div style="margin-top: 32px;">
-              <button class="btn btn-primary" data-href="tool-template.html" id="learn-more-btn">
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          <div class="steps-list stagger-children reveal from-right">
-
-            <div class="step-item">
-              <div class="step-num">01</div>
-              <div class="step-body">
-                <h4>Data Structuring</h4>
-                <p>Organize heterogeneous biological data into interoperable schemas that feed unified computation.</p>
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-num">02</div>
-              <div class="step-body">
-                <h4>Computational Modeling</h4>
-                <p>Structural modeling and simulation pipelines generate predictive insights from structured biological
-                  data.</p>
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-num">03</div>
-              <div class="step-body">
-                <h4>Intelligent Reasoning</h4>
-                <p>Domain-aware reasoning systems guide experimental decisions using retrieval-augmented knowledge
-                  bases.</p>
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-num">04</div>
-              <div class="step-body">
-                <h4>Scalable Research Pipeline</h4>
-                <p>Automated orchestration from hypothesis through validation, iteration, and therapeutic direction.</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-
-    <!-- ═══════════════════════ NEWS ═══════════════════════ -->
-    <section id="news" class="section">
-      <div class="container">
-        <div class="news-header reveal">
-          <div class="section-tag">Updates & Announcements</div>
-          <h2 class="section-title">Latest from the Lab</h2>
-          <p class="section-lead">
-            Real-time updates on our computational research progress, 
-            new tool deployments, and ecosystem upgrades.
-          </p>
-        </div>
-
-        <div class="news-list stagger-children">
-          <div class="news-item reveal">
-            <div class="news-date-tag">15-03-2026</div>
-            <div class="news-content">
-              <div class="news-headline-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mike-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-                <div class="ticker-container">
-                  <h3 class="news-headline marquee">Launched RO Virtual Research Lab For Users Feedback and Upgrade — Beta Testing Now Live — Initial Feedback Requested — </h3>
-                </div>
-              </div>
-              <p class="news-text">
-                We are proud to announce the official beta launch of the Virtual Research Lab. 
-                The platform is now open for initial users to provide critical feedback as we 
-                continue to refine our virtual formulation and modeling capabilities.
-              </p>
-              <a href="http://lab.roecosystem.in" target="_blank" rel="noopener noreferrer" class="news-action-link">
-                Go to Virtual Lab
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -676,8 +435,8 @@
         </div>
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="#about" class="footer-link" data-scroll="about">About</a>
-          <a href="#tools" class="footer-link" data-scroll="tools">Tools</a>
-          <a href="#how" class="footer-link" data-scroll="how">Pipeline</a>
+          <a href="#" class="footer-link" id="footer-tools-link">Tools</a>
+          <a href="#" class="footer-link" id="footer-pipeline-link">Pipeline</a>
           <a href="#founder" class="footer-link" data-scroll="founder">Vision</a>
           <a href="#" class="footer-link" id="footer-people-link">People</a>
           <a href="#" class="footer-link" id="footer-note-link">Note</a>
@@ -706,73 +465,461 @@
 
       <!-- Content -->
       <div class="people-modal-content">
-        <h2 class="people-section-title" id="people-modal-title">Our Team</h2>
+        <h2 class="people-section-title" id="people-modal-title">Our People</h2>
         
-        <div class="people-team-grid">
-          <!-- Founder -->
-          <div class="people-founder-card">
-            <img class="people-founder-photo" src="rahul-photo.jpg" alt="Rahul Kota" />
-            <div class="people-founder-name">Rahul Kota</div>
-            <div class="people-founder-title">Founder, CEO & Director<br>RO Ecosystem</div>
-            <div class="people-founder-actions">
-              <a href="mailto:rahulkota0101@gmail.com" class="btn btn-primary people-contact-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                Contact
-              </a>
-              <a href="https://rahul.roecosystem.in/" target="_blank" rel="noopener noreferrer" class="btn btn-outline people-visit-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Visit
-              </a>
+        <!-- Tabs -->
+        <div class="people-tabs">
+          <button class="people-tab-btn active" data-tab="leadership">Leadership Team</button>
+          <button class="people-tab-btn" data-tab="board">Board of Directors</button>
+          <button class="people-tab-btn" data-tab="members">Members</button>
+          <button class="people-tab-btn" data-tab="advisors">Scientific Advisors</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="people-tab-content">
+          <!-- Leadership Team -->
+          <div class="people-tab-pane active" id="leadership">
+            <div class="people-team-grid">
+              <div class="people-founder-card">
+                <img class="people-founder-photo" src="rahul-photo.jpg" alt="Rahul Kota" />
+                <div class="people-founder-name">Rahul Kota</div>
+                <div class="people-founder-title">Chief Executive Officer (CEO)</div>
+              </div>
             </div>
           </div>
 
-          <!-- Co-Founder -->
-          <div class="people-founder-card">
-            <img class="people-founder-photo" src="rihan-photo.jpg" alt="Rihan Kota" />
-            <div class="people-founder-name">Rihan Kota</div>
-            <div class="people-founder-title">Co-Founder & CTO<br>RO Ecosystem</div>
-            <a href="mailto:rihankora2004@gmail.com" class="btn btn-primary people-contact-btn">
+          <!-- Board of Directors -->
+          <div class="people-tab-pane" id="board">
+            <div class="people-team-grid">
+              <div class="people-founder-card">
+                <img class="people-founder-photo" src="rahul-photo.jpg" alt="Rahul Kota" />
+                <div class="people-founder-name">Rahul Kota</div>
+                <div class="people-founder-title">Founder & Director</div>
+              </div>
+              <div class="people-founder-card">
+                <img class="people-founder-photo" src="rihan-photo.jpg" alt="Rihan Kota" />
+                <div class="people-founder-name">Rihan Kota</div>
+                <div class="people-founder-title">Co-Founder & Director</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Members -->
+          <div class="people-tab-pane" id="members">
+            <div class="people-team-grid">
+              <div class="people-founder-card">
+                <img class="people-founder-photo" src="ajay-photo.png" alt="Ajay" />
+                <div class="people-founder-name">Ajay</div>
+                <div class="people-founder-title">Media and Advertising Head</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Members -->
+          <div class="people-tab-pane" id="members">
+            <div class="people-team-grid">
+              <div class="people-founder-card">
+                <img class="people-founder-photo" src="ajay-photo.png" alt="Ajay" />
+                <div class="people-founder-name">Ajay</div>
+                <div class="people-founder-title">Member</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scientific Advisors -->
+          <div class="people-tab-pane" id="advisors">
+            <div class="people-advisors-content">
+              <p class="people-advisors-text">
+                We are actively seeking Scientific Advisors in Computational Biology, Pharmaceutical Sciences and Drug Discovery to help guide our research and product direction.
+              </p>
+              <div class="people-advisors-contacts">
+                <div class="people-advisor-contact">
+                  <span class="people-contact-icon">📧</span>
+                  <div class="people-contact-info">
+                    <div class="people-contact-label">Research Inquiries</div>
+                    <a href="mailto:orchestration.ro@gmail.com" class="people-contact-email">orchestration.ro@gmail.com</a>
+                    <a href="mailto:orchestration.ro@gmail.com" class="btn btn-primary people-send-btn">Send Email →</a>
+                  </div>
+                </div>
+                <div class="people-advisor-contact">
+                  <span class="people-contact-icon">💼</span>
+                  <div class="people-contact-info">
+                    <div class="people-contact-label">Collaboration & Advisory</div>
+                    <a href="mailto:rahulkota0101@gmail.com" class="people-contact-email">rahulkota0101@gmail.com</a>
+                    <a href="mailto:rahulkota0101@gmail.com" class="btn btn-primary people-send-btn">Send Email →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ TOOLS MODAL ═══════════════════════ -->
+  <div id="tools-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tools-modal-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <!-- Close Button -->
+      <button class="modal-close" id="tools-modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="modal-content">
+        <div class="tools-header">
+          <h2 class="modal-title" id="tools-modal-title">Platform Tools</h2>
+          <p class="modal-lead">
+            Four modular research tools architected for collaboration,
+            structural modeling, and domain-aware reasoning.
+          </p>
+        </div>
+
+        <div class="tools-grid stagger-children" id="tools-grid-modal">
+
+          <!-- Tool: MedNeXuS AI -->
+          <div class="tool-card minimal-card" id="tool-0-modal"
+            onclick="window.open('http://mednexusai.roecosystem.in', '_blank')" tabindex="0" role="button"
+            aria-label="Access MedNeXuS Portal">
+            <div class="tool-card-header">
+              <div class="tool-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                </svg>
+              </div>
+              <div class="tool-status">
+                <span class="status-indicator status-active"></span>
+                <span class="status-label">Active</span>
+              </div>
+            </div>
+            <div class="tool-card-content">
+              <h3>MedNeXuS AI</h3>
+              <p>Research papers made easy. AI-powered tool for deep literature reasoning and hypothesis generation.</p>
+            </div>
+            <div class="tool-card-footer">
+              <span class="tool-link">Access Tool →</span>
+            </div>
+          </div>
+
+          <!-- Tool: Research Navigator -->
+          <div class="tool-card minimal-card" id="tool-navigator-modal"
+            onclick="window.open('http://research.roecosystem.in', '_blank')" tabindex="0" role="button"
+            aria-label="Access Research Navigator">
+            <div class="tool-card-header">
+              <div class="tool-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="3,11 22,2 13,21 11,13 3,11"/>
+                </svg>
+              </div>
+              <div class="tool-status">
+                <span class="status-indicator status-active"></span>
+                <span class="status-label">Active</span>
+              </div>
+            </div>
+            <div class="tool-card-content">
+              <h3>Research Navigator</h3>
+              <p>AI-powered research intelligence that detects contradictions and predicts field directions.</p>
+            </div>
+            <div class="tool-card-footer">
+              <span class="tool-link">Access Tool →</span>
+            </div>
+          </div>
+
+          <!-- Tool 1: RO Virtual Research Lab -->
+          <div class="tool-card minimal-card" id="tool-1-modal"
+            onclick="window.open('http://lab.roecosystem.in', '_blank')" tabindex="0" role="button"
+            aria-label="Access RO Virtual Research Lab">
+            <div class="tool-card-header">
+              <div class="tool-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="tool-status">
+                <span class="status-indicator status-beta"></span>
+                <span class="status-label">Beta</span>
+              </div>
+            </div>
+            <div class="tool-card-content">
+              <h3>RO Virtual Research Lab</h3>
+              <p>Intelligent experimental reasoning environment for structured formulation and AI-assisted simulation.</p>
+            </div>
+            <div class="tool-card-footer">
+              <span class="tool-link">Access Tool →</span>
+            </div>
+          </div>
+
+          <!-- Tool 2 -->
+          <div class="tool-card minimal-card" id="tool-2-modal" data-href="tool-template.html" tabindex="0" role="button"
+            aria-label="Access RO-Link">
+            <div class="tool-card-header">
+              <div class="tool-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+              </div>
+              <div class="tool-status">
+                <span class="status-indicator status-coming"></span>
+                <span class="status-label">Coming Soon</span>
+              </div>
+            </div>
+            <div class="tool-card-content">
+              <h3>RO-Link</h3>
+              <p>Collaborative research workspace for structured discussion and research orchestration.</p>
+            </div>
+            <div class="tool-card-footer">
+              <span class="tool-link">Learn More →</span>
+            </div>
+          </div>
+
+          <!-- Tool 3 -->
+          <div class="tool-card minimal-card" id="tool-3-modal" data-href="tool-template.html" tabindex="0" role="button"
+            aria-label="Access RO Nexus">
+            <div class="tool-card-header">
+              <div class="tool-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m16.24-3.76l-4.24 4.24m-6-6L4.76 7.76m12.48 6l-4.24-4.24m-6 6l4.24 4.24"/>
+                </svg>
+              </div>
+              <div class="tool-status">
+                <span class="status-indicator status-dev"></span>
+                <span class="status-label">In Development</span>
+              </div>
+            </div>
+            <div class="tool-card-content">
+              <h3>RO Nexus</h3>
+              <p>Domain-specialized AI reasoning system integrating biological knowledge with intelligent modeling.</p>
+            </div>
+            <div class="tool-card-footer">
+              <span class="tool-link">Learn More →</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PIPELINE MODAL ═══════════════════════ -->
+  <div id="pipeline-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pipeline-modal-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <!-- Close Button -->
+      <button class="modal-close" id="pipeline-modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="modal-content">
+        <h2 class="modal-title" id="pipeline-modal-title">Pipeline</h2>
+        <p class="modal-lead">
+          Four stages that transform raw biological uncertainty
+          into engineered, scalable research insights.
+        </p>
+
+        <div class="steps-list stagger-children">
+
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Data Structuring</h4>
+              <p>Organize heterogeneous biological data into interoperable schemas that feed unified computation.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>Computational Modeling</h4>
+              <p>Structural modeling and simulation pipelines generate predictive insights from structured biological
+                data.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>Intelligent Reasoning</h4>
+              <p>Domain-aware reasoning systems guide experimental decisions using retrieval-augmented knowledge
+                bases.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h4>Scalable Research Pipeline</h4>
+              <p>Automated orchestration from hypothesis through validation, iteration, and therapeutic direction.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ NEWS MODAL ═══════════════════════ -->
+  <div id="news-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="news-modal-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <!-- Close Button -->
+      <button class="modal-close" id="news-modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="modal-content">
+        <h2 class="modal-title" id="news-modal-title">Research Broadcast</h2>
+        <p class="modal-lead">Official newsroom for the RO Ecosystem and its computational platforms.</p>
+
+        <div class="news-grid-page">
+          <!-- Main News Item -->
+          <article class="news-item">
+            <div class="news-date-tag">15-03-2026</div>
+            <div class="news-content">
+              <div class="news-headline-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="speaker-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <div class="ticker-container">
+                  <h2 class="news-headline marquee">BREAKING: RO Virtual Research Lab Enters Public Beta — Feedback Channels Open — Full Scale Simulation Capabilities Now Online — </h2>
+                </div>
+              </div>
+              <p class="news-text" style="font-size: 1.1rem; margin-top: 20px;">
+                Today marks a significant milestone in the RO Ecosystem roadmap. The Virtual Research Lab, our core environment for structured formulation and AI-assisted simulation, has entered its open testing phase.
+              </p>
+              <p class="news-text">
+                Researchers can now access the platform to perform computational pre-formulation, drug research simulations, and manage research notebooks with engineering precision. This release focus on stability, user experience, and gathering high-fidelity feedback from the scientific community to drive our next phase of development.
+              </p>
+              <div style="margin-top: 30px;">
+                <a href="http://lab.roecosystem.in" target="_blank" class="btn btn-primary">
+                  Enter Research Lab
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Past News Placeholder -->
+          <div class="news-item" style="opacity: 0.6; pointer-events: none;">
+            <div class="news-date-tag">01-03-2026</div>
+            <div class="news-content">
+              <h3 class="news-headline">MedNeXuS AI Acquisition Completed</h3>
+              <p class="news-text">Strategic integration of Grok-powered literature reasoning into the RO pipeline.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ INVESTORS MODAL ═══════════════════════ -->
+  <div id="investors-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="investors-modal-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <!-- Close Button -->
+      <button class="modal-close" id="investors-modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="modal-content">
+        <h2 class="modal-title" id="investors-modal-title">Investment & Growth</h2>
+        
+        <div class="investors-content">
+          <p class="investors-lead">
+            Investors & Partners<br>
+            Join us in building the future of accessible computational research. We are seeking strategic partners and investors.
+          </p>
+
+          <div class="investors-stats">
+            <div class="investor-stat">
+              <span class="stat-icon">📈</span>
+              <div class="stat-text">
+                <div class="stat-value">$3B+</div>
+                <div class="stat-label">Market Size</div>
+              </div>
+            </div>
+            <div class="investor-stat">
+              <span class="stat-icon">🎯</span>
+              <div class="stat-text">
+                <div class="stat-value">10M+</div>
+                <div class="stat-label">Potential Users</div>
+              </div>
+            </div>
+            <div class="investor-stat">
+              <span class="stat-icon">📅</span>
+              <div class="stat-text">
+                <div class="stat-value">2026</div>
+                <div class="stat-label">Founded</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>The Opportunity</h3>
+          <p>The global computational chemistry software market is valued at over $3B and growing rapidly. Current solutions like Schrödinger, Gaussian and BIOVIA cost $50,000 to $500,000 per year — putting them out of reach for the vast majority of researchers worldwide, particularly in emerging markets like India.</p>
+
+          <p>RO Ecosystem is building an accessible, AI-powered alternative that serves the millions of researchers, students and pharmaceutical professionals who cannot afford enterprise solutions. Our platform combines real PubChem data, Groq-powered AI simulation and interactive 3D molecular visualization — all free in the browser.</p>
+
+          <p>We leverage cutting-edge AI technology and open scientific databases to democratize access to research-grade computational tools. Our mission is to accelerate drug discovery and scientific research by making enterprise-level capabilities available to everyone, creating unprecedented market disruption and growth opportunities.</p>
+
+          <h3>Why Now</h3>
+          <ol>
+            <li>AI capabilities have reached research-grade accuracy</li>
+            <li>India's pharma sector is the world's 3rd largest by volume</li>
+            <li>Millions of researchers lack access to enterprise tools</li>
+            <li>Open-access scientific databases have matured significantly</li>
+          </ol>
+
+          <h3>Get In Touch</h3>
+          <p>Interested in investing in or partnering with RO Ecosystem?</p>
+
+          <form class="investor-form" id="investor-form">
+            <div class="form-group">
+              <label for="investor-name">Your Name</label>
+              <input type="text" id="investor-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="investor-email">Your Email</label>
+              <input type="email" id="investor-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="investor-org">Organization</label>
+              <input type="text" id="investor-org" name="organization">
+            </div>
+            <div class="form-group">
+              <label for="investor-message">Tell us about your interest...</label>
+              <textarea id="investor-message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="investor-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
-              Contact
-            </a>
-          </div>
-        </div>
-
-        <!-- Separator -->
-        <div class="people-team-separator"></div>
-
-        <!-- Team Member -->
-        <div class="people-team-single">
-          <div class="people-founder-card people-member-card">
-            <img class="people-founder-photo" src="ajay-photo.png" alt="Ajay Andukuri" />
-            <div class="people-founder-name">Ajay Andukuri</div>
-            <div class="people-founder-title">Media and Advertising Head<br>RO Ecosystem</div>
-            <a href="mailto:ajayandukuri2529@gmail.com" class="btn btn-primary people-contact-btn">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                            aria-hidden="true">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                            <polyline points="22,6 12,13 2,6" />
-                          </svg>
-                          Contact
-                        </a>
-          </div>
+              Send Message →
+            </button>
+            <div id="investorFormStatus" class="form-status" role="status" aria-live="polite"></div>
+          </form>
         </div>
       </div>
     </div>

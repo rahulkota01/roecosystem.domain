@@ -426,20 +426,29 @@
       console.warn('EmailJS init failed', e);
     }
 
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('contact-submit');
+    // Contact form
+    initForm('contactForm', 'formStatus', 'contact-submit', 'service_fmxln33', 'template_dcg9xpl');
+
+    // Investor form
+    initForm('investor-form', 'investorFormStatus', 'investor-submit', 'service_fmxln33', 'template_dcg9xpl');
+  }
+
+  function initForm(formId, statusId, submitId, serviceID, templateID) {
+    const form = document.getElementById(formId);
+    const statusEl = document.getElementById(statusId);
+    const submitBtn = document.getElementById(submitId);
     if (!form) return;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       // Basic validation
-      const name = form.from_name.value.trim();
-      const email = form.from_email.value.trim();
-      const msg = form.message.value.trim();
+      const name = form.from_name?.value.trim() || form.name?.value.trim();
+      const email = form.from_email?.value.trim() || form.email?.value.trim();
+      const subject = form.subject?.value.trim();
+      const msg = form.message?.value.trim();
       if (!name || !email || !msg) {
-        showStatus('Please fill in all required fields.', 'error');
+        showStatus(statusEl, 'Please fill in all required fields.', 'error');
         return;
       }
 
@@ -447,45 +456,42 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span style="opacity:0.7">Sending…</span>';
       }
-      showStatus('Sending message…', '');
-
-      const serviceID = 'service_fmxln33';
-      const templateID = 'template_dcg9xpl';
+      showStatus(statusEl, 'Sending message…', '');
 
       if (window.emailjs && emailjs.sendForm) {
         emailjs.sendForm(serviceID, templateID, this)
           .then(() => {
-            showStatus('✓ Message sent — thank you!', 'success');
+            showStatus(statusEl, '✓ Message sent — thank you!', 'success');
             form.reset();
           })
           .catch(err => {
-            showStatus('Send failed. Please try email directly.', 'error');
+            showStatus(statusEl, 'Send failed. Please try email directly.', 'error');
             console.error('EmailJS error:', err);
           })
           .finally(() => {
             if (submitBtn) {
               submitBtn.disabled = false;
-              submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+              submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message →';
             }
           });
       } else {
         // Fallback mailto
-        const subj = encodeURIComponent(form.subject.value || 'Contact from roecosystem.in');
-        const body = encodeURIComponent(`From: ${name} (${email})\n\n${msg}`);
+        const subj = encodeURIComponent('Investment Inquiry from roecosystem.in');
+        const body = encodeURIComponent(`From: ${name} (${email})\nOrganization: ${form.organization?.value || 'N/A'}\n\n${msg}`);
         window.open(`mailto:rahulkota0101@gmail.com?subject=${subj}&body=${body}`, '_blank');
-        showStatus('Opening email client…', 'success');
+        showStatus(statusEl, 'Opening email client…', 'success');
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+          submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message →';
         }
       }
     });
+  }
 
-    function showStatus(msg, type) {
-      if (!statusEl) return;
-      statusEl.textContent = msg;
-      statusEl.className = 'form-status' + (type ? ' ' + type : '');
-    }
+  function showStatus(statusEl, msg, type) {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.className = 'form-status' + (type ? ' ' + type : '');
   }
 
   /* ====================================================
@@ -555,6 +561,24 @@
     // Close modal handlers
     if (closeBtn) closeBtn.addEventListener('click', closePeopleModal);
     if (backdrop) backdrop.addEventListener('click', closePeopleModal);
+
+    // Tab functionality
+    const tabBtns = modal.querySelectorAll('.people-tab-btn');
+    const tabPanes = modal.querySelectorAll('.people-tab-pane');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        
+        // Remove active class from all buttons and panes
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding pane
+        btn.classList.add('active');
+        modal.querySelector(`#${tab}`).classList.add('active');
+      });
+    });
 
     // Contact buttons - close modal before opening mailto
     modal.querySelectorAll('.people-contact-btn').forEach(btn => {
@@ -895,6 +919,86 @@
     }, 260);
   }
 
+  /* ====================================================
+     17. GENERAL MODALS
+  ==================================================== */
+  function initGeneralModals() {
+    // Tools modal
+    initModal('tools-nav-link', 'tools-modal', 'tools-modal-close');
+
+    // Pipeline modal
+    initModal('pipeline-nav-link', 'pipeline-modal', 'pipeline-modal-close');
+
+    // News modal
+    initModal('news-nav-link', 'news-modal', 'news-modal-close');
+
+    // Investors modal
+    initModal('investors-nav-link', 'investors-modal', 'investors-modal-close');
+  }
+
+  function initModal(navLinkId, modalId, closeBtnId) {
+    const navLink = document.getElementById(navLinkId);
+    const modal = document.getElementById(modalId);
+    const closeBtn = document.getElementById(closeBtnId);
+    const backdrop = modal?.querySelector('.modal-backdrop');
+
+    if (!modal) return;
+
+    // Open modal
+    if (navLink) {
+      navLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(modalId);
+      });
+    }
+
+    // Close modal
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modalId));
+    if (backdrop) backdrop.addEventListener('click', () => closeModal(modalId));
+
+    // Keyboard: Escape to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        closeModal(modalId);
+      }
+    });
+  }
+
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button for keyboard accessibility
+    const closeBtn = document.getElementById(`${modalId}-close`);
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 60);
+  }
+
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    // Animate out
+    const box = modal.querySelector('.modal-box');
+    if (box) {
+      box.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      box.style.opacity = '0';
+      box.style.transform = 'translateY(20px) scale(0.95)';
+    }
+
+    setTimeout(() => {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      if (box) {
+        box.style.transition = '';
+        box.style.opacity = '';
+        box.style.transform = '';
+      }
+    }, 260);
+  }
+
   // ── Patch init() to also call initPeopleModal, initNoteModal and initDevModal ──
   const _originalInit = init;
   function initAll() {
@@ -902,10 +1006,37 @@
     initPeopleModal();
     initNoteModal();
     initDevModal();
+    initGeneralModals();
+    
+    // Special: Hero CTA button opens Tools modal
+    const heroCtaPrimary = document.getElementById('hero-cta-primary');
+    if (heroCtaPrimary) {
+      heroCtaPrimary.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal('tools-modal');
+      });
+    }
+    
+    // Footer Tools and Pipeline links
+    const footerToolsLink = document.getElementById('footer-tools-link');
+    if (footerToolsLink) {
+      footerToolsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal('tools-modal');
+      });
+    }
+    
+    const footerPipelineLink = document.getElementById('footer-pipeline-link');
+    if (footerPipelineLink) {
+      footerPipelineLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal('pipeline-modal');
+      });
+    }
   }
 
+  // Initialize everything
   if (document.readyState === 'loading') {
-    document.removeEventListener('DOMContentLoaded', init);
     document.addEventListener('DOMContentLoaded', initAll);
   } else {
     initAll();
