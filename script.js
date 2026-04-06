@@ -89,15 +89,44 @@
 
   function initMobileNav() {
     if (!navToggle || !navMenu) return;
+    
+    // Toggle menu
     navToggle.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
+      
+      // Prevent body scroll when menu is open
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
+    
+    // Close on link click
+    navMenu.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+    
     // Close on outside click
     document.addEventListener('click', e => {
       if (navMenu.classList.contains('open') && !navMenu.contains(e.target)) {
         navMenu.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       }
     });
   }
@@ -523,7 +552,7 @@
     initCardTilt();
     initMagneticButtons();
     initTextScramble();
-    initCursorTrail();
+    // initCursorTrail(); // Disabled for cleaner look
     initParallax();
 
     // Form
@@ -920,7 +949,62 @@
   }
 
   /* ====================================================
-     17. GENERAL MODALS
+     17. TEAM SUB-NAVIGATION (Scroll Spy)
+  ==================================================== */
+  function initTeamSubNav() {
+    const subnav = document.getElementById('team-subnav');
+    if (!subnav) return;
+
+    const links = subnav.querySelectorAll('.team-subnav-link');
+    const sections = document.querySelectorAll('.team-section');
+
+    // Click handler for smooth scroll
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          // Update active state
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          
+          // Smooth scroll to section
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Update URL hash without jumping
+          history.pushState(null, null, targetId);
+        }
+      });
+    });
+
+    // Scroll spy - update active link based on scroll position
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+  }
+
+  /* ====================================================
+     18. GENERAL MODALS
   ==================================================== */
   function initGeneralModals() {
     // Tools modal
@@ -999,40 +1083,23 @@
     }, 260);
   }
 
-  // ── Patch init() to also call initPeopleModal, initNoteModal and initDevModal ──
+  // ── Patch init() to also call modal functions (DISABLED - modals removed) ──
   const _originalInit = init;
   function initAll() {
     _originalInit();
-    initPeopleModal();
-    initNoteModal();
-    initDevModal();
-    initGeneralModals();
+    // Modal functions disabled - now using separate pages
+    // initPeopleModal();
+    // initNoteModal();
+    // initDevModal();
+    // initGeneralModals();
     
-    // Special: Hero CTA button opens Tools modal
-    const heroCtaPrimary = document.getElementById('hero-cta-primary');
-    if (heroCtaPrimary) {
-      heroCtaPrimary.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal('tools-modal');
-      });
-    }
+    // Initialize team sub-navigation (if on team page)
+    initTeamSubNav();
     
-    // Footer Tools and Pipeline links
-    const footerToolsLink = document.getElementById('footer-tools-link');
-    if (footerToolsLink) {
-      footerToolsLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal('tools-modal');
-      });
-    }
+    // Special: Hero CTA button opens Products page (handled by HTML link)
+    // No special JS needed
     
-    const footerPipelineLink = document.getElementById('footer-pipeline-link');
-    if (footerPipelineLink) {
-      footerPipelineLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal('pipeline-modal');
-      });
-    }
+    // Footer links now point to separate pages (handled by HTML)
   }
 
   // Initialize everything
