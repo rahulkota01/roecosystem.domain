@@ -1,0 +1,2 @@
+# Netlify redirects - serve all HTML files directly
+# No SPA redirect needed for multi-page static site
