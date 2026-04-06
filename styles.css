@@ -2678,29 +2678,47 @@ a.contact-method:hover .method-icon {
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Mobile Navigation - Visible and Compact */
+  body {
+    position: relative;
+  }
+
+  /* Mobile Navigation - Clean Layout */
   .site-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    background: var(--black);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  [data-theme="light"] .site-header {
+    background: rgba(255, 255, 255, 0.98);
   }
 
   .header-inner {
+    display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 10px 0;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
   }
 
+  /* First row: Logo + Theme toggle */
   .logo {
     align-self: center;
+    margin-bottom: 2px;
   }
 
+  /* Second row: Navigation */
   .nav-menu {
     width: 100%;
+    display: flex;
     justify-content: center;
     gap: 0;
   }
@@ -2709,19 +2727,24 @@ a.contact-method:hover .method-icon {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2px 4px;
+    align-items: center;
+    gap: 3px 5px;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-links li {
     flex: 0 0 auto;
+    list-style: none;
   }
 
   .nav-links a {
-    font-size: 0.75rem;
-    padding: 5px 8px;
+    font-size: 0.72rem;
+    padding: 4px 7px;
     white-space: nowrap;
     display: inline-block;
+    line-height: 1.2;
   }
 
   /* Hide hamburger */
@@ -2729,17 +2752,16 @@ a.contact-method:hover .method-icon {
     display: none !important;
   }
 
-  /* Keep theme toggle */
+  /* Theme toggle in flow, not absolute */
   .theme-toggle {
-    padding: 5px;
-    position: absolute;
-    right: 0;
-    top: 15px;
+    padding: 4px;
+    margin-left: 8px;
+    align-self: center;
   }
 
-  /* Adjust all sections to account for taller header */
+  /* Adjust sections for taller header */
   .hero-section {
-    padding-top: 160px !important;
+    padding-top: 150px !important;
   }
 
   /* Hero Layout */
@@ -2816,6 +2838,7 @@ a.contact-method:hover .method-icon {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .section-title {
@@ -2891,13 +2914,14 @@ a.contact-method:hover .method-icon {
     width: 100%;
   }
 
-  /* Team Page Subnav */
+  /* Team Page Subnav - Positioned below header */
   .team-subnav {
     position: sticky;
-    top: 140px !important;
+    top: 130px !important;
     padding: 8px 0 !important;
     z-index: 999;
     background: var(--black);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   [data-theme="light"] .team-subnav {
@@ -2908,11 +2932,13 @@ a.contact-method:hover .method-icon {
     gap: 4px;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 16px;
   }
 
   .team-subnav-link {
     padding: 6px 10px;
     font-size: 0.75rem;
+    line-height: 1.2;
   }
 
   /* Team Grid */
@@ -2999,21 +3025,30 @@ a.contact-method:hover .method-icon {
   img {
     max-width: 100%;
     height: auto;
+    display: block;
   }
 
   /* Fix all cards and containers */
   .minimal-card,
   .about-card,
-  .vision-card {
+  .vision-card,
+  .tool-card,
+  .hero-card {
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box;
-    padding: 16px !important;
+    overflow: hidden;
   }
 
   /* Ensure no element overflows */
-  * {
+  *, *::before, *::after {
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  /* Sections should not overflow */
+  .section {
+    overflow: hidden;
   }
 }
 
