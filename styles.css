@@ -2761,7 +2761,12 @@ a.contact-method:hover .method-icon {
 
   /* Adjust sections for taller header */
   .hero-section {
-    padding-top: 150px !important;
+    padding-top: 180px !important;
+  }
+
+  /* Other sections need spacing too */
+  .section:first-of-type {
+    padding-top: 180px !important;
   }
 
   /* Hero Layout */
@@ -2917,7 +2922,7 @@ a.contact-method:hover .method-icon {
   /* Team Page Subnav - Positioned below header */
   .team-subnav {
     position: sticky;
-    top: 130px !important;
+    top: 160px !important;
     padding: 8px 0 !important;
     z-index: 999;
     background: var(--black);
@@ -2939,6 +2944,15 @@ a.contact-method:hover .method-icon {
     padding: 6px 10px;
     font-size: 0.75rem;
     line-height: 1.2;
+  }
+
+  /* Team sections need extra top spacing */
+  .team-section {
+    scroll-margin-top: 200px;
+  }
+
+  .team-section:first-of-type {
+    padding-top: 200px !important;
   }
 
   /* Team Grid */
